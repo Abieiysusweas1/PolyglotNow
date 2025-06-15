@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: blueviolet;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    /* background-image: url("../img/fondo2.jpg"); */
+}
+
+.cab {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 50%;
+}
+
+.form-tit {
+    text-align: center;
+}
+
+.pri {
+  background: #fff;
+  width: 420px;
+  border-radius: 10px;
+  padding: 32px;
+}
+
+.lang {
+    padding: 20px;
+    border: 1px solid black;
+    transition: transform .2s;
+    border-radius: 30px;
+    display: flex;
+}
+
+.lang:hover {
+    background-color: #dedede;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.lang:active {
+    background-color: blueviolet;
+    transform: scale(1.1);
+    cursor: pointer;
+    color: white;
+}
+
+.ban {
+    width: 15%;
+    border: 1px solid black;
+}
+
+.let-tit {
+    padding-left: 10px;
+
+}
+
+.enl {
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+}
+

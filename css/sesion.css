@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: blueviolet;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    /* background-image: url("../img/fondo2.jpg"); */
+}
+.cab {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.pri {
+  background: #fff;
+  width: 420px;
+  border-radius: 10px;
+  padding: 32px;
+}
+
+.form-tit {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+.texto {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    background-color: #ecf0f1;
+}
+
+.texto:hover{
+    background-color: #dce2e3;
+}
+
+.opt {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid transparent;
+    background-color: #ecf0f1;
+    margin-bottom: 15px;
+}
+
+.opt:hover {
+    cursor:pointer; 
+}
+
+.envio {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    background-color: blueviolet;
+    color: white;
+    cursor: pointer;
+}
+
+.envio:hover {
+    background-color: #781dcc;
+}
+
+.envio:active {
+    background-color: #7119c2;
+}
+.logo {
+    width: 50%;
+}

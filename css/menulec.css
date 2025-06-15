@@ -1,0 +1,100 @@
+body {
+    background-image: linear-gradient(blueviolet,white);
+    /* background-image: url(../img/marcademierda.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-size: 3.2em;
+    background-size: 12px;
+    background-size: auto;
+    background-size: cover;*/
+    background-attachment: fixed;
+}
+
+.cab {
+    display: flex;
+    flex-direction: row;
+}
+
+.summary-h3 {
+  font-size: 1.17em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.5em 0;
+  list-style-type: none;
+  cursor: pointer;    
+}
+
+.summary-h3:active {
+    color: blueviolet;
+}
+
+.ban {
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 40px;
+    padding: 10px;
+    transition: transform .2s;
+    background-color: white;
+    display: block;
+}
+
+.ban:hover {
+    transform: scale(1.1);
+    cursor:pointer;
+    background-color: #dce2e3;
+}
+
+.ban:active {
+    background-color: blueviolet;
+}
+
+.pri {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.lec {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 15px;
+    width: 70%;
+    transition: transform .2s;
+}
+
+.lec:hover {
+    transform: scale(1.05);
+    background-color: #efefef;
+}
+
+.content {
+    text-align: justify;
+}
+
+table {
+    border: 1px solid black;
+    margin: 0 auto;
+
+}
+
+tr,td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+.td {
+    font-weight: bold;
+}
+@media (max-width: 940px) {
+   .cab {
+        justify-content: center;
+    }
+
+    .ban {
+        width: 7%;
+        margin: 0 auto;
+    }
+}
