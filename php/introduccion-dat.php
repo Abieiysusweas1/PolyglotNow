@@ -4,7 +4,7 @@
    $host = "localhost";
    $usuario = "root";
    $contrasena = "";
-   $base_datos = "PolyglotNow";
+   $base_datos = "polyglotnow";
 
    $conexion = mysqli_connect($host, $usuario, $contrasena, $base_datos) or die("Error de conexión: " . mysqli_connect_error());
 
@@ -41,7 +41,7 @@
 <body>
    <div class="cab">
       <img class="logo" src="../img/logo.png">
-   <div class="pri">
+   <div class="pri" style="margin: 0 auto">
       <h4>La cuenta ha sido creada exitósamente.</h4>
       <h5>Haz <a href="../html/sesion/sesion.html">clic aquí</a> para volver al inicio de sesión.</h5>
    </div>
