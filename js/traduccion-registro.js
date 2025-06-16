@@ -34,7 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    function updateLanguage(lang) {
+    const langSelect = document.getElementById('lan');
+
+    function updateLanguage() {
+        const lang = langSelect.value;
+
         document.querySelector('.form-tit').textContent = translations[lang]['form-tit'];
         document.querySelector('label[for="usu"]').textContent = translations[lang]['usu'];
         document.querySelector('input[name="user"]').placeholder = translations[lang]['user-placeholder'];
@@ -43,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('label[for="lan"]').textContent = translations[lang]['lan'];
         document.querySelector('label[for="cur"]').textContent = translations[lang]['cur'];
         document.querySelector('.envio').value = translations[lang]['submit'];
+
+        // Actualizar labels de los checkboxes
         document.querySelector('label[for="c_ing"]').textContent = translations[lang]['c_ing'];
         document.querySelector('label[for="c_esp"]').textContent = translations[lang]['c_esp'];
         document.querySelector('label[for="c_fra"]').textContent = translations[lang]['c_fra'];
@@ -53,22 +59,12 @@ document.addEventListener("DOMContentLoaded", function() {
         // Ocultar checkbox del idioma nativo
         document.getElementById("checkbox-ing").style.display = (lang === "ingles") ? "none" : "flex";
         document.getElementById("checkbox-esp").style.display = (lang === "espanol") ? "none" : "flex";
-
-        // Mostrar/ocultar enlaces
-        document.getElementById("link-english").style.display = (lang === "espanol") ? "inline" : "none";
-        document.getElementById("link-spanish").style.display = (lang === "ingles") ? "inline" : "none";
     }
 
-    document.getElementById("link-english").addEventListener("click", function(e) {
-        e.preventDefault();
-        updateLanguage('ingles');
-    });
-    document.getElementById("link-spanish").addEventListener("click", function(e) {
-        e.preventDefault();
-        updateLanguage('espanol');
-    });
+    // Cambia idioma al cargar la página
+    updateLanguage();
 
-    // Opcional: inicia en español
-    updateLanguage('espanol');
+    // Cambia idioma cuando el usuario selecciona otro en el select
+    langSelect.addEventListener('change', updateLanguage);
 });
 
