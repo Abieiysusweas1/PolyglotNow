@@ -33,8 +33,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar cuenta</title>
-    <link rel="stylesheet" href="../../css/sesion.css">
-    <link rel="icon" href="../../img/icon.png">
+    <link rel="stylesheet" href="../css/sesion.css">
+    <link rel="icon" href="../img/icon.png">
 </head>
 <body>
    <div class="cab">
