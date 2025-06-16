@@ -22,8 +22,8 @@
 
    $conexion = mysqli_connect($host,$usuario,$contrasena,$base_datos) or die("Hubo un error en la conexión.");
 
-   $sql = "INSERT INTO usuarios(usuario,contra,idioma,c_ing,c_esp,c_fra,c_ita,c_ale,c_rum) VALUES ('$_REQUEST[$user]',
-   '$_REQUEST[$contra]','$_REQUEST[$lan]','$_REQUEST[$c_ing]','$_REQUEST[$c_esp]','$_REQUEST[$c_fra]','$_REQUEST[$c_ita]','$_REQUEST[$c_ale]','$_REQUEST[$c_rum]')";
+   $sql = "INSERT INTO usuarios(usuario,contra,idioma,c_ing,c_esp,c_fra,c_ita,c_ale,c_rum) VALUES ('$_POST[$user]',
+   '$_POST[$contra]','$_POST[$lan]','$_POST[$c_ing]','$_POST[$c_esp]','$_POST[$c_fra]','$_POST[$c_ita]','$_POST[$c_ale]','$_POST[$c_rum]')";
    
    mysqli_query($conexion,$sql) or die("Ocurrió un error en la consulta".mysqli_error($conexion));
 
