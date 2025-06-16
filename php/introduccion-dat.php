@@ -21,7 +21,7 @@
    $c_rum = isset($_POST["c_rum"]) ? 1 : 0;
 
    $sql = "INSERT INTO usuarios(usuario,contra,idioma,c_ing,c_esp,c_fra,c_ita,c_ale,c_rum) 
-   VALUES ($user,$contra,$lan,$c_ing,$c_esp,$c_fra,$c_ita,$c_ale,$c_rum)";
+   VALUES ('$user','$contra','$lan',$c_ing,$c_esp,$c_fra,$c_ita,$c_ale,$c_rum)";
    
    mysqli_query($conexion,$sql) or die("Ocurrió un error en la consulta".mysqli_error($conexion));
 
