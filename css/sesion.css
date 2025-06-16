@@ -51,6 +51,17 @@ form {
     cursor:pointer; 
 }
 
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-left: 40%;
+  margin-bottom: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
 .envio {
     width: 100%;
     padding: 10px;
