@@ -21,40 +21,41 @@
             <input class="texto" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Contraseña" required/>
             <br>
             <label for="lan">Selecciona tu lengua nativa:</label>
-            <select class="opt" id="lan" name="language">
-                <option>Español</option>
-                <option>English</option>
+            <select class="opt" id="lan" name="lan">
+                <option value="espanol">Español</option>
+                <option value="ingles">English</option>
             </select>
             <br>
             <label for="cur">Selecciona los idiomas que quieres aprender:</label>
             <br><br>
-            <div class="checkbox-group">
-                <input  type="checkbox" name="c_ing">
+            <div class="checkbox-group" id="checkbox-ing">
+                <input type="checkbox" name="c_ing" value="c_ing">
                 <label for="c_ing">Inglés</label>
             </div>
-            <div class="checkbox-group">
-                <input  type="checkbox" name="c_fra" value="frances">
+            <div class="checkbox-group" id="checkbox-esp">
+                <input type="checkbox" name="c_esp" value="c_esp">
+                <label for="c_esp">Español</label>
+            </div>
+            <div class="checkbox-group" id="checkbox-fra">
+                <input type="checkbox" name="c_fra" value="c_fra">
                 <label for="c_fra">Francés</label>
             </div>
-            <div class="checkbox-group">
-                <input type="checkbox" name="c_ita" value="italiano">
+            <div class="checkbox-group" id="checkbox-ita">
+                <input type="checkbox" name="c_ita" value="c_ita">
                 <label for="c_ita">Italiano</label>
             </div>
-            <div class="checkbox-group">
-                <input type="checkbox" name="c_ale" value="aleman">
+            <div class="checkbox-group" id="checkbox-ale">
+                <input type="checkbox" name="c_ale" value="c_ale">
                 <label for="c_ale">Alemán</label>
             </div>
-            <div class="checkbox-group">
-                <input type="checkbox" name="c_rum" value="rumano">
+            <div class="checkbox-group" id="checkbox-rum">
+                <input type="checkbox" name="c_rum" value="c_rum">
                 <label for="c_rum">Rumano</label>
             </div>
-            <!-- 
-             Italiano
-            Alemán
-            Rumano-->
             <br>
             <input class="envio" type="submit" value="Ingresar"/>
         </form>
     </div>
+    <script src="../../js/ocultar-checkbox.js"></script>
 </body>
 </html>
