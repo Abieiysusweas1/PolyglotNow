@@ -13,17 +13,19 @@
    $user = $_POST["user"];
    $contra = $_POST["password"];
    $lan = $_POST["lan"];
-   $c_ing = $_POST["c_ing"];
-   $c_esp = $_POST["c_esp"];
-   $c_fra = $_POST["c_fra"];
-   $c_ita = $_POST["c_ita"];
-   $c_ale = $_POST["c_ale"];
-   $c_rum = $_POST["c_rum"];
+   $c_ing = isset($_POST["c_ing"]) ? 1 : 0;
+   $c_esp = isset($_POST["c_esp"]) ? 1 : 0;
+   $c_fra = isset($_POST["c_fra"]) ? 1 : 0;
+   $c_ita = isset($_POST["c_ita"]) ? 1 : 0;
+   $c_ale = isset($_POST["c_ale"]) ? 1 : 0;
+   $c_rum = isset($_POST["c_rum"]) ? 1 : 0;
 
    $conexion = mysqli_connect($host,$usuario,$contrasena,$base_datos) or die("Hubo un error en la conexión.");
 
-   mysqli_query($conexion,"INSERT INTO usuarios(usuario,contra,idioma,c_ing,c_esp,c_fra,c_ita,c_ale,c_rum) VALUES ('$_REQUEST[$user]',
-   '$_REQUEST[$contra]','$_REQUEST[$lan]','$_REQUEST[$c_ing]','$_REQUEST[$c_esp]','$_REQUEST[$c_fra]','$_REQUEST[$c_ita]','$_REQUEST[$c_ale]','$_REQUEST[$c_rum]')") or die("Ocurrió un error en la consulta");
+   $sql = "INSERT INTO usuarios(usuario,contra,idioma,c_ing,c_esp,c_fra,c_ita,c_ale,c_rum) VALUES ('$_REQUEST[$user]',
+   '$_REQUEST[$contra]','$_REQUEST[$lan]','$_REQUEST[$c_ing]','$_REQUEST[$c_esp]','$_REQUEST[$c_fra]','$_REQUEST[$c_ita]','$_REQUEST[$c_ale]','$_REQUEST[$c_rum]')";
+   
+   mysqli_query($conexion,$sql) or die("Ocurrió un error en la consulta".mysqli_error($conexion));
 
    mysql_close($conexion);
 ?>
