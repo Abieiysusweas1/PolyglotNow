@@ -56,9 +56,24 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('label[for="c_ale"]').textContent = translations[lang]['c_ale'];
         document.querySelector('label[for="c_rum"]').textContent = translations[lang]['c_rum'];
 
+     /* document.getElementById("checkbox-ing").style.display = (lang === "english") ? "none" : "flex";
+        document.getElementById("checkbox-esp").style.display = (lang === "espanol") ? "none" : "flex"; */
+        
         // Ocultar checkbox del idioma nativo
-        document.getElementById("checkbox-ing").style.display = (lang === "ingles") ? "none" : "flex";
-        document.getElementById("checkbox-esp").style.display = (lang === "espanol") ? "none" : "flex";
+        const checkboxIng = document.getElementById("checkbox-ing");
+        const checkboxEsp = document.getElementById("checkbox-esp");
+        const inputIng = checkboxIng.querySelector('input[type="checkbox"]');
+        const inputEsp = checkboxEsp.querySelector('input[type="checkbox"]');
+
+        if (lang === "english") {
+            checkboxIng.style.display = "none";
+            checkboxEsp.style.display = "flex";
+            inputIng.checked = false;
+        } else {
+            checkboxIng.style.display = "flex";
+            checkboxEsp.style.display = "none";
+            inputEsp.checked = false;
+        }
     }
 
     // Cambia idioma al cargar la página
