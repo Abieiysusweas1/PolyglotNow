@@ -20,7 +20,9 @@
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         if ($row['contra'] === $contra) {
-            $mensaje = "<h4 style='text-align: center;'>La cuenta ya existe</h4>";
+            $_SESSION['user'] = $user;
+            header("Location: cursos.php");
+            exit;
         } else {
             $mensaje = "<h4 style='text-align: center;'>La contraseña no es correcta</h4>";
         }

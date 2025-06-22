@@ -1,4 +1,9 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['user'])) {
+        die("Error: Usuario no autenticado. <a href='../html/sesion/sesion.html'>Volver al inicio de sesión</a>");
+    }
 $host = "localhost";
 $usuario = "root";
 $contrasena = "";
@@ -8,9 +13,27 @@ $conexion = mysqli_connect($host, $usuario, $contrasena, $base_datos) or die("Er
 $user = $_SESSION['user'];
 $sql = "SELECT c_ing, c_esp, c_fra, c_ita, c_ale, c_rum FROM usuarios WHERE usuario = '$user'";
 $result = mysqli_query($conexion, $sql);
+
+if (!$result || mysqli_num_rows($result) === 0) {
+    die("Error: Usuario no encontrado en la base de datos.");
+}
+
 $row = mysqli_fetch_assoc($result);
 
-$idioma_usuario = $row['idioma'];
+    // Normalizar el valor del idioma
+    $idioma_usuario = strtolower(trim($row['idioma']));
+    $idioma_usuario = str_replace(['ñ', 'á', 'é', 'í', 'ó', 'ú'], ['n', 'a', 'e', 'i', 'o', 'u'], $idioma_usuario);
+
+    // Mapeo de valores posibles a 'english' o 'espanol'
+    if (strpos($idioma_usuario, 'english') !== false || strpos($idioma_usuario, 'ingles') !== false) {
+        $idioma_usuario = 'english';
+    } elseif (strpos($idioma_usuario, 'espanol') !== false || strpos($idioma_usuario, 'español') !== false) {
+        $idioma_usuario = 'espanol';
+    } else {
+        $idioma_usuario = 'espanol'; // Valor por defecto
+    }
+
+/* $idioma_usuario = $row['idioma']; */
 
 $traducciones = [
     'espanol' => [
@@ -36,6 +59,14 @@ $traducciones = [
         'no_cursos' => 'You are not enrolled in any courses'
     ]
 ];
+
+    $idiomas_activos = 0;
+    if ($idioma_usuario != 'english' && $row['c_ing']) $idiomas_activos++;
+    if ($idioma_usuario != 'espanol' && $row['c_esp']) $idiomas_activos++;
+    if ($row['c_fra']) $idiomas_activos++;
+    if ($row['c_ita']) $idiomas_activos++;
+    if ($row['c_ale']) $idiomas_activos++;
+    if ($row['c_rum']) $idiomas_activos++;
 ?>
 
 <!DOCTYPE html>

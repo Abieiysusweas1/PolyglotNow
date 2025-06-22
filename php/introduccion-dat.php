@@ -10,9 +10,9 @@
 
    /* CAPTAR LOS DATOS DEL FORMULARIO */
 
-   $user = $_POST["user"];
-   $contra = $_POST["password"];
-   $lan = $_POST["lan"];
+   $user = mysqli_real_escape_string($conexion,$_POST["user"]);
+   $contra = mysqli_real_escape_string($conexion,$_POST["password"]);
+   $lan = mysqli_real_escape_string($conexion,$_POST["lan"]);
    $c_ing = isset($_POST["c_ing"]) ? 1 : 0;
    $c_esp = isset($_POST["c_esp"]) ? 1 : 0;
    $c_fra = isset($_POST["c_fra"]) ? 1 : 0;
