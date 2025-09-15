@@ -1,0 +1,67 @@
+    .overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    z-index: 1000; /* Asegura que esté encima de todo */
+    justify-content: center;
+    align-items: center;
+    }
+
+    .popup-content {
+        margin-top: 10%;
+        margin-left: 35%;
+        margin-right: 35%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    .btns {
+        display: flex;
+    }
+
+    .exit {
+        border: 1px solid black;
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        width: 40%;
+        padding: 10px;
+        background-color: red;
+    }
+
+    .exit:hover {
+        cursor: pointer;
+        transition: width 2s;
+    }
+
+    .exit:active {
+        background-color: purple;
+        color: yellow;
+    }
+
+    .cont {
+        border: 1px solid black;
+        color: white;
+        margin: 0 auto;
+        text-align: center;
+        width: 40%;
+        padding: 10px;
+        background-color: green;
+    }
+
+    .cont:hover {
+        cursor:pointer;
+        transition: width 2s;
+    }
+
+    .cont:active {
+        background-color: purple;
+        color: yellow;
+    }

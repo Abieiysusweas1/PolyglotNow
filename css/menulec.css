@@ -88,6 +88,7 @@ tr,td {
 .td {
     font-weight: bold;
 }
+
 @media (max-width: 940px) {
    .cab {
         justify-content: center;

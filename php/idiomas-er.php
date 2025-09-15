@@ -37,7 +37,7 @@ if (strpos($idioma_usuario, 'english') !== false || strpos($idioma_usuario, 'ing
 
 $traducciones = [
     'espanol' => [
-        'titulo' => 'Selecciona un idioma',
+        'titulo' => 'Elimina un idioma',
         'ing' => 'Inglés',
         'esp' => 'Español',
         'fra' => 'Francés',
@@ -45,10 +45,11 @@ $traducciones = [
         'ale' => 'Alemán',
         'rum' => 'Rumano',
         'max_idiomas' => 'Has alcanzado el máximo de idiomas (5)',
+        'min_idiomas' => 'No tienes ningún idioma agregado',
         'atr' => 'Volver'
     ],
     'english' => [
-        'titulo' => 'Select a language',
+        'titulo' => 'Delete a language',
         'ing' => 'English',
         'esp' => 'Spanish',
         'fra' => 'French',
@@ -56,6 +57,7 @@ $traducciones = [
         'ale' => 'German',
         'rum' => 'Romanian',
         'max_idiomas' => 'You have reached the maximum languages (5)',
+        'min_idiomas' => 'You don\'t have any languages added',
         'atr' => 'Return'
     ]
 ];
@@ -126,13 +128,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idioma'])) {
     <div class="pri">
         <h1><?php echo $traducciones[$idioma_usuario]['titulo'];?></h1>
         
-        <?php if ($idiomas_activos < 5): ?>
+        <?php if ($idiomas_activos > 0): ?>
             <div class="idiomas-container">
-                <?php if ($idioma_usuario != 'english' && !$row['c_ing']): ?>
-                    <form method="POST" class="lang-form" action="agregar-idioma.php">
+                <?php if ($idioma_usuario != 'english' && $row['c_ing']): ?>
+                    <form method="POST" class="lang-form" action="eliminar-idioma.php">
                         <input type="hidden" name="idioma" value="c_ing">
                         <button type="submit" class="lang-button">
-                            <div class="lang">
+                            <div class="ses">
                                 <img class="ban" src="../img/banderas/uk.png">
                                 <h2 class="let-tit"><?php echo $traducciones[$idioma_usuario]['ing']; ?></h2>
                             </div>
@@ -140,11 +142,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idioma'])) {
                     </form>
                 <?php endif; ?>
                 
-                <?php if ($idioma_usuario != 'espanol' && !$row['c_esp']): ?>
-                    <form method="POST" class="lang-form" action="agregar-idioma.php">
+                <?php if ($idioma_usuario != 'espanol' && $row['c_esp']): ?>
+                    <form method="POST" class="lang-form" action="eliminar-idioma.php">
                         <input type="hidden" name="idioma" value="c_esp">
                         <button type="submit" class="lang-button">
-                            <div class="lang">
+                            <div class="ses">
                                 <img class="ban" src="../img/banderas/esp.png">
                                 <h2 class="let-tit"><?php echo $traducciones[$idioma_usuario]['esp']; ?></h2>
                             </div>
@@ -152,11 +154,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idioma'])) {
                     </form>
                 <?php endif; ?>
                 
-                <?php if (!$row['c_fra']): ?>
-                    <form method="POST" class="lang-form" action="agregar-idioma.php">
+                <?php if ($row['c_fra']): ?>
+                    <form method="POST" class="lang-form" action="eliminar-idioma.php">
                         <input type="hidden" name="idioma" value="c_fra">
                         <button type="submit" class="lang-button">
-                            <div class="lang">
+                            <div class="ses">
                                 <img class="ban" src="../img/banderas/fr.png">
                                 <h2 class="let-tit"><?php echo $traducciones[$idioma_usuario]['fra']; ?></h2>
                             </div>
@@ -164,11 +166,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idioma'])) {
                     </form>
                 <?php endif; ?>
                 
-                <?php if (!$row['c_ita']): ?>
-                    <form method="POST" class="lang-form" action="agregar-idioma.php">
+                <?php if ($row['c_ita']): ?>
+                    <form method="POST" class="lang-form" action="eliminar-idioma.php">
                         <input type="hidden" name="idioma" value="c_ita">
                         <button type="submit" class="lang-button">
-                            <div class="lang">
+                            <div class="ses">
                                 <img class="ban" src="../img/banderas/it.png">
                                 <h2 class="let-tit"><?php echo $traducciones[$idioma_usuario]['ita']; ?></h2>
                             </div>
@@ -176,11 +178,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idioma'])) {
                     </form>
                 <?php endif; ?>
                 
-                <?php if (!$row['c_ale']): ?>
-                    <form method="POST" class="lang-form" action="agregar-idioma.php">
+                <?php if ($row['c_ale']): ?>
+                    <form method="POST" class="lang-form" action="eliminar-idioma.php">
                         <input type="hidden" name="idioma" value="c_ale">
                         <button type="submit" class="lang-button">
-                            <div class="lang">
+                            <div class="ses">
                                 <img class="ban" src="../img/banderas/de.png">
                                 <h2 class="let-tit"><?php echo $traducciones[$idioma_usuario]['ale']; ?></h2>
                             </div>
@@ -188,11 +190,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idioma'])) {
                     </form>
                 <?php endif; ?>
                 
-                <?php if (!$row['c_rum']): ?>
-                    <form method="POST" class="lang-form" action="agregar-idioma.php">
+                <?php if ($row['c_rum']): ?>
+                    <form method="POST" class="lang-form" action="eliminar-idioma.php">
                         <input type="hidden" name="idioma" value="c_rum">
                         <button type="submit" class="lang-button">
-                            <div class="lang">
+                            <div class="ses">
                                 <img class="ban" src="../img/banderas/ro.png">
                                 <h2 class="let-tit"><?php echo $traducciones[$idioma_usuario]['rum']; ?></h2>
                             </div>
@@ -201,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idioma'])) {
                 <?php endif; ?>
             </div>
         <?php else: ?>
-            <p><?php echo $traducciones[$idioma_usuario]['max_idiomas']; ?></p>
+            <p style="color: black"><?php echo $traducciones[$idioma_usuario]['max_idiomas']; ?></p>
         <?php endif; ?>
     </div>
     <a href="cursos.php"><p><?php echo $traducciones[$idioma_usuario]['atr']; ?></p></a>

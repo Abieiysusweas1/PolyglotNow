@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
             'c_ale': 'Alemán',
             'c_rum': 'Rumano'
         },
-        'ingles': {
+        'english': {
             'form-tit': 'CREATE AN ACCOUNT',
             'usu': 'Enter a username *',
             'user-placeholder': 'Username',
@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('label[for="c_ale"]').textContent = translations[lang]['c_ale'];
         document.querySelector('label[for="c_rum"]').textContent = translations[lang]['c_rum'];
 
+        
      /* document.getElementById("checkbox-ing").style.display = (lang === "english") ? "none" : "flex";
         document.getElementById("checkbox-esp").style.display = (lang === "espanol") ? "none" : "flex"; */
         
@@ -74,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
             checkboxEsp.style.display = "none";
             inputEsp.checked = false;
         }
+
     }
 
     // Cambia idioma al cargar la página

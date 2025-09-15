@@ -37,6 +37,26 @@ body {
     display: flex;
 }
 
+.ses {
+    padding: 20px;
+    border: 1px solid black;
+    transition: transform .2s;
+    border-radius: 30px;
+}
+
+.ses:hover {
+    background-color: #db8686;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.ses:active {
+    background-color: red;
+    transform: scale(1.1);
+    cursor: pointer;
+    color: white;
+}
+
 .lang:hover {
     background-color: #dedede;
     transform: scale(1.1);
@@ -54,7 +74,6 @@ body {
     width: 15%;
     border: 1px solid black;
 }
-
 .let-tit {
     padding-left: 10px;
 
@@ -65,4 +84,9 @@ body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: black;
 }
+
+.dele {
+    display: flex;
+}
+
 

@@ -1,0 +1,32 @@
+#respuesta1, #respuesta2, #respuesta3, #respuesta4 {
+    text-align: center;
+}
+
+#respuesta1, #respuesta2, #respuesta3, #respuesta4:hover {
+    cursor: pointer;
+}
+
+.next {
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 15px;
+    width: 10%;
+    transition: transform .2s;
+}
+
+.next:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: #efefef;
+}
+
+.exit {
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 15px;
+    width: 20%;    
+}
