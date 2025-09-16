@@ -47,6 +47,6 @@
     <div class="pri" style="margin: 0 auto">
         <?php echo $mensaje ?>
     </div>
-    <p>Haz <a href="../html/sesion/sesion.html">clic aquí</a> para volver al inicio de sesión.</p>
+    <p>Haz <a href="../index.html">clic aquí</a> para volver al inicio de sesión.</p>
 </body>
 </html>
