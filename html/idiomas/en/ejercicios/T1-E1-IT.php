@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italian T1: Ciao e Arrivederci!</title>
+    <link rel="icon" href="../../../../img/icon.png">
+    <link rel="stylesheet" href="../../../../css/idiomas.css">
+    <link rel="stylesheet" href="../../../../css/menulec.css">
+    <link rel="stylesheet" href="../../../../css/preguntas.css">
+    <link rel="stylesheet" href="../../../emergente/emergente.css">
+    <script src="../../../emergente/emergente.js"></script>
+  </head>
+  <style>
+    .correcta {
+      background-color: #4CAF50; /* verde */
+      color: white;
+    }
+
+    .incorrecta {
+      background-color: #f44336; /* rojo */
+      color: white;
+    }
+  </style>
+<body>
+
+<div id="pregunta-container" class="pri">
+  <div id="pregunta"></div>
+  <div id="respuestas">
+    <div id="respuesta1" class="lec"></div>
+    <div id="respuesta2" class="lec"></div>
+    <div id="respuesta3" class="lec"></div>
+    <div id="respuesta4" class="lec"></div>
+  </div>
+</div>
+<div id="openPopup" class="next">X</div>
+<!-- La ventana emergente -->
+<div id="popup" class="overlay">
+    <div class="popup-content">
+        <h2 style="text-align: center;">Exit the activity</h2>
+        <p style="text-align: center;">If you exit, you will have to start the activity when you enter again.<br><br> Do you want to exit?</p>
+        <div class="btns">
+            <div id="exitPopup" class="exit">Exit</div>
+            <div id="closePopup" class="cont">Continue</div>
+        </div>
+    </div>
+</div>  
+
+
+<script>
+localStorage.setItem("lang", "EN");
+localStorage.setItem("idioma", "ita");
+
+let testFinalizado = false;
+
+const preguntas = [
+  {
+    pregunta: "How do you say 'Hello' in Italian?",
+    respuestas: ["Ciao", "Buonasera", "Thank you", "Please"],
+    correcta: "Ciao"
+  },
+  {
+    pregunta: "Which of these phrases is used to say goodbye in Italian?",
+    respuestas: ["Ciao", "Thank you", "Arrivederci", "Good morning"],
+    correcta: "Arrivederci"
+  },
+  {
+    pregunta: "What does 'Buongiorno' mean?",
+    respuestas: ["Good afternoon", "Good night", "Good morning", "Hello"],
+    correcta: "Good morning"
+  },
+  {
+    pregunta: "What is a polite way to get someone's attention in Italian?",
+    respuestas: ["Per favore", "Ciao", "Thank you", "Good morning"],
+    correcta: "Per favore"
+  },
+  {
+    pregunta: "What does 'Piacere' mean?",
+    respuestas: ["Nice to meet you", "Thank you", "Hello", "Goodbye"],
+    correcta: "Nice to meet you"
+  },
+  {
+    pregunta: "How do you say 'Thank you' in Italian?",
+    respuestas: ["Grazie", "You're welcome", "Please", "Good evening"],
+    correcta: "Grazie"
+  },
+  {
+    pregunta: "What is a response to 'Grazie'?",
+    respuestas: ["You're welcome", "Ciao", "Nice to meet you", "Arrivederci"],
+    correcta: "You're welcome"
+  },
+  {
+    pregunta: "Which phrase would you use to introduce yourself in Italian?",
+    respuestas: ["Mi chiamo...", "Good evening", "Nice to meet you", "Ciao"],
+    correcta: "Mi chiamo..."
+  },
+  {
+    pregunta: "What does 'Come stai?' mean?",
+    respuestas: ["What's up?", "How are you?", "Who are you?", "What's your name?"],
+    correcta: "How are you?"
+  },
+  {
+    pregunta: "Which of these is an informal greeting in Italian?",
+    respuestas: ["Ciao", "Nice to meet you", "Goodbye", "Thank you"],
+    correcta: "Ciao"
+  },
+  {
+    pregunta: "Which phrase is a nighttime greeting in Italian?",
+    respuestas: ["Buona notte", "Good morning", "Goodbye", "Ciao"],
+    correcta: "Buona notte"
+  },
+  {
+    pregunta: "Which is a way to say 'See you later' in Italian?",
+    respuestas: ["A dopo", "Ciao", "Thank you", "Nice to meet you"],
+    correcta: "A dopo"
+  },
+  {
+    pregunta: "What does 'Addio' mean?",
+    respuestas: ["Hello", "Thank you", "Goodbye (formal)", "See you later"],
+    correcta: "Goodbye (formal)"
+  },
+  {
+    pregunta: "Which of these phrases would you use to say 'See you next time' in Italian?",
+    respuestas: ["Alla prossima", "Good evening", "Thank you", "Ciao"],
+    correcta: "Alla prossima"
+  },
+  {
+    pregunta: "What does 'Benvenuto' mean?",
+    respuestas: ["Thank you", "You're welcome", "Welcome", "Goodbye"],
+    correcta: "Welcome"
+  }
+];
+
+var num_pre = preguntas.length;
+
+let preguntasRestantes = [...preguntas];
+let preguntaActual = null;
+let respuestasCorrectas = 0;
+
+function mostrarPregunta() {
+  if (preguntasRestantes.length === 0) {
+    testFinalizado = true;
+    document.getElementById("pregunta").textContent = "You have completed all the questions!";
+    document.getElementById("respuestas").innerHTML = `<p>Correct answers: ${respuestasCorrectas} of ${num_pre}</p>`;
+  }
+  const indice = Math.floor(Math.random() * preguntasRestantes.length);
+  preguntaActual = preguntasRestantes[indice];
+
+  document.getElementById("pregunta").textContent = preguntaActual.pregunta;
+  const respuestasDiv = document.getElementById("respuestas");
+  const botones = respuestasDiv.getElementsByTagName("div");
+
+  for (let i = 0; i < botones.length; i++) {
+    botones[i].className = "lec";
+    botones[i].textContent = preguntaActual.respuestas[i];
+    botones[i].onclick = function() {
+      verificarRespuesta(this);
+    };
+  }
+  preguntasRestantes.splice(indice,1);
+}
+
+document.getElementById("openPopup").addEventListener("click", function() {
+    if (testFinalizado) {
+        event.stopImmediatePropagation();
+        window.location.href = "../italian-en.html";
+        return;
+    }
+    document.getElementById("popup").style.display = 'block';
+});
+
+function verificarRespuesta(botonSeleccionado) {
+  const respuestasDiv = document.getElementById("respuestas");
+  const botones = respuestasDiv.getElementsByTagName("div");
+
+  // desactivar más clics
+  for (let i = 0; i < botones.length; i++) {
+    botones[i].onclick = null;
+    botones[i].classList.add("disabled");
+  }
+
+  if (botonSeleccionado.textContent === preguntaActual.correcta) {
+    botonSeleccionado.classList.add("correcta");
+    respuestasCorrectas++;
+  } else {
+    botonSeleccionado.classList.add("incorrecta");
+    // resaltar la correcta
+    for (let i = 0; i < botones.length; i++) {
+      if (botones[i].textContent === preguntaActual.correcta) {
+        botones[i].classList.add("correcta");
+      }
+    }
+  }
+
+  // mostrar siguiente después de un tiempo
+  setTimeout(mostrarPregunta, 1500);
+}
+
+/* function verificarRespuesta(respuestaUsuario) {
+  if (respuestaUsuario === preguntaActual.correcta) {
+    alert("¡Correcto!");
+  } else {
+    alert("Incorrecto. La respuesta correcta es: " + preguntaActual.correcta);
+  }
+  mostrarPregunta(); // Muestra la siguiente pregunta
+} */
+
+mostrarPregunta(); // Llama a la función para mostrar la primera pregunta
+</script>
+</body>
+</html>
