@@ -41,7 +41,7 @@
       <img class="logo" src="../img/logo.png">
    <div class="pri" style="margin: 0 auto">
       <h4>La cuenta ha sido creada exitósamente.</h4>
-      <h5>Haz <a href="../html/sesion/sesion.html">clic aquí</a> para volver al inicio de sesión.</h5>
+      <h5>Haz <a href="../index.html">clic aquí</a> para volver al inicio de sesión.</h5>
    </div>
    </div>
 </body>
